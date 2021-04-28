@@ -18,6 +18,7 @@ better idea of the communities they're moving into from the perspective of the s
 **Login Page:**
 - requires a University of South Carolina email (email has to end in ".sc.edu")
 - requires a password
+- When the user successfully logs in, they are taken to the Dorm List Page
 - has button at the bottom that says "Don't have an account? Sign up" that you can click which
   leads to the Create Account page
 
@@ -27,13 +28,20 @@ better idea of the communities they're moving into from the perspective of the s
 - requires email (email must end in ".sc.edu")
 - requires password
 - has a submit button beneath those fields that allows user to create an account
-- when user succesfully creates an account, they are taken to the Dorm List Page
+- when user successfully creates an account, they are taken to the Dorm List Page
 
 **Dorm List Page:**
 - The dorm list page lists every available on-campus housing option at the University of South Carolina
 - Next to each of the names of the dorms, there are stars (can range from 1 star to 5 stars) based on user reviews
 - When the name of the dorm is selected, the user is led to the Dorm Information Page
 - At the very top of the page, there will be a "View Location" button that will lead to the Map Page
+- There will also be a button at the top of the page that says “Profile” that when selected, leads to the User Profile Page
+
+**User Profile Page**
+-	Has a place where the user can upload a picture of themselves 
+-	Has their first and last name
+-	Allows the user to view reviews that they have left on the app
+-	Has a “Logout” button that when selected, logs the user off and leads back to the Home Page
 
 **Dorm Information Page**
 - Every dorm on-campus at the University of South Carolina has its own information page
@@ -62,4 +70,4 @@ better idea of the communities they're moving into from the perspective of the s
  - Shows every on-campus housing option as a marker on a Google Map (or any map)
  - When a marker is selected, a text box will pop up listing the dorm's name and its address
  - There will be a button at the top of the page that says "Return to Dorm Listing" that when selected, leads back to the Dorm Information Page
- 
+
