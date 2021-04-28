@@ -19,14 +19,6 @@ const routes: Routes = [
     loadChildren: () => import('./create-account/create-account.module').then( m => m.CreateAccountPageModule)
   },
   {
-    path: 'view-review-detail',
-    loadChildren: () => import('./view-review-detail/view-review-detail.module').then( m => m.ViewReviewDetailPageModule)
-  },
-  {
-    path: 'filter',
-    loadChildren: () => import('./filter/filter.module').then( m => m.FilterPageModule)
-  },
-  {
     path: 'add-review',
     loadChildren: () => import('./add-review/add-review.module').then( m => m.AddReviewPageModule)
   },
@@ -43,12 +35,8 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: 'about',
-    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+    path: 'map',
+    loadChildren: () => import('./map/map.module').then( m => m.MapPageModule)
   }
 ];
 @NgModule({
