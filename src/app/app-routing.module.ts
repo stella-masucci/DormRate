@@ -35,10 +35,6 @@ const routes: Routes = [
     loadChildren: () => import('./edit-review/edit-review.module').then( m => m.EditReviewPageModule)
   },
   {
-    path: 'messages',
-    loadChildren: () => import('./messages/messages.module').then( m => m.MessagesPageModule)
-  },
-  {
     path: 'favorites',
     loadChildren: () => import('./favorites/favorites.module').then( m => m.FavoritesPageModule)
   },

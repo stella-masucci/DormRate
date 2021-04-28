@@ -12,8 +12,8 @@ const routes: Routes = [
         loadChildren: () => import('../dorms/dorms.module').then(m => m.DormsPageModule)
       },
       {
-        path: 'messages',
-        loadChildren: () => import('../messages/messages.module').then(m => m.MessagesPageModule)
+        path: 'add-review',
+        loadChildren: () => import('../add-review/add-review.module').then(m => m.AddReviewPageModule)
       },
       {
         path: 'profile',
