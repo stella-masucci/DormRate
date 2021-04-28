@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>Sign In</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<ion-row style="height: 30px"></ion-row>
+  <ion-item>
+    <ion-label position="floating">Email Address</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email" required></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password" required></ion-input>
+  </ion-item>
+
+  <ion-row style="height: 30px"></ion-row>
+
+  <ion-button class="submit-btn" expand="block" type="submit" (click)="signInWithEmail(user.email,user.password)" >Login</ion-button>
+  <p style="text-align: center">OR</p>
+  <ion-button class="submit-btn" expand="block" (click)="loginGoogle()">Google Login</ion-button>
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+  <ion-button slot="end"(click)="signup()">Create Account</ion-button>
+  </ion-toolbar>
+</ion-footer>
