@@ -74,11 +74,11 @@ export class SignInPage implements OnInit {
   }
 
    signup() {
-     this.router.navigate(["/create-account-page"])
+     this.router.navigate(["/create-account"])
    }
 
    back() {
-     this.router.navigate(["/"]);
+     this.router.navigate(["/home"]);
    }
 
    loginGoogle() {

@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DormsPage } from './dorms.page';
-
 import { DormsPageRoutingModule } from './dorms-routing.module';
 
 @NgModule({
