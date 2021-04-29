@@ -22,7 +22,8 @@ export class SignInPage implements OnInit {
   constructor(
 
     public afauth: AngularFireAuth,
-    private router: Router, public firebase: AngularFirestore,
+    public firebase: AngularFirestore,
+    private router: Router,
     private tc: ToastController,
     private ar: ActivatedRoute
 
@@ -103,8 +104,8 @@ export class SignInPage implements OnInit {
      toast.color = "success";
      toast.duration = 2000;
      document.body.appendChild(toast);
-     return toast.present();
-     this.router.navigateByUrl('/');
+     toast.present();
+     self.router.navigate(["/tabs/"]);
  });
    }
 

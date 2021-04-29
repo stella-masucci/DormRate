@@ -20,10 +20,15 @@ const routes: Routes = [
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
       },
       {
+        path: 'logout',
+        redirectTo: '/sign-in',
+        pathMatch: 'full'
+      },
+      {
         path: '',
         redirectTo: '/tabs/dorms',
         pathMatch: 'full'
-      }
+      }  
     ]
   },
   {
