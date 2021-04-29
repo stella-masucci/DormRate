@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>create-account</ion-title>
+    <ion-row>
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>Create Account</ion-title>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+
+
+
+
+
+
+
+
+
+  <ion-row style="height: 30px"></ion-row>
+  <ion-item>
+    <ion-label position="floating">Name (this will be displayed when you post reviews)</ion-label>
+    <ion-input type="text" [(ngModel)]="user.name" required></ion-input>
+  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email Address</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password" required></ion-input>
+    </ion-item>
+
+    <ion-row style="height: 30px"></ion-row>
+
+
+  <ion-button class="submit-btn" expand="block" type="submit" (click)="signUpWithEmail(user.email,user.password)">Create Account</ion-button>
 
 </ion-content>

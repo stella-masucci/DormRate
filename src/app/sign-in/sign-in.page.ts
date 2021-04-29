@@ -16,7 +16,9 @@ export class SignInPage implements OnInit {
     user =
     {
       email:"",
-      password:""
+      password:"",
+      name:"",
+      numberofreviews:0
     }
 
   constructor(
@@ -40,9 +42,8 @@ export class SignInPage implements OnInit {
   		// navigate to user profile
   		console.log(user.user.email, user.user.uid);
   		var user1 = firebase.auth().currentUser;
-  		console.log(user1.uid);
       //this.itemservice.setUID(user.user.uid);
-      //this.toastMessage();
+      this.toastMessage();
       var db = firebase.firestore();
       var self = this;
       db.collection("users").where("uid",'==', user1.uid)
@@ -50,11 +51,8 @@ export class SignInPage implements OnInit {
         .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
             console.log(doc.id, "=>", doc.data());
-            var type = doc.data().usertype;
-            var t = String(type);
-            console.log("User type:"+t);
             //self.itemservice.setUsertype(t);
-            self.router.navigate(["/"]);
+            self.router.navigate(["/tabs/dorms"]);
             //self.itemservice.load_my_orders();
             //self.itemservice.load_my_carts();
           });
@@ -65,6 +63,7 @@ export class SignInPage implements OnInit {
   	})
   	.catch(error => {
       console.log(error);
+      this.router.navigate(["/home"]);
       const t = document.createElement('ion-toast');
       t.message = "Incorrect email/password combo, or user does not exist.";
       t.color = "danger";
@@ -105,8 +104,18 @@ export class SignInPage implements OnInit {
      toast.duration = 2000;
      document.body.appendChild(toast);
      toast.present();
-     self.router.navigate(["/tabs/"]);
+     self.router.navigate(["/tabs/dorms"]);
  });
    }
+
+  toastMessage() {
+  this.router.navigate(["/tabs/dorms"]);
+   const toast = document.createElement('ion-toast');
+   toast.message = 'Succesfully logged in.';
+   toast.color = "success";
+   toast.duration = 2000;
+   document.body.appendChild(toast);
+   return toast.present();
+ }
 
 }

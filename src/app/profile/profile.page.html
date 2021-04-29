@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-title>Your Profile</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon (click)="goToFavorites()" name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<ion-row style="height: 80px"></ion-row>
+
+<ion-item>Name: {{user.name}} </ion-item>
+<ion-item>{{user.numberofreviews}} reviews</ion-item>
 
 </ion-content>
