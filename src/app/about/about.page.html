@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>about</ion-title>
+    <ion-row>
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>About Us</ion-title>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-grid style="height: 100%">
+      <ion-row class="message" justify-content-center align-items-center style="height: 100%; flex-direction: column">
+          This project was created in order to allow
+          students at the University of South Carolina
+          better understand their on-campus living options
+          when they get onto campus, and get a better idea
+          of the communities they're moving into from the
+          perspective of the students.
+      </ion-row>
+      <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+        <div class="link">
+          <a href="#" onclick="window.open('https://www.cnn.com','_system', 'location=yes'); return false;">Github Repository</a>
+        </div>
+      </ion-row>
+  </ion-grid>
 
 </ion-content>
