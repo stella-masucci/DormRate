@@ -1,4 +1,6 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +9,19 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  constructor(
+    public afAuth: AngularFireAuth,
+    private router: Router
+  ) {
+    this.afAuth.authState.subscribe(auth => {
+      if (!auth) {
+        this.router.navigate(["/sign-in"]);
+      }
+    });
+  }
+
+  logout() {
+    this.afAuth.signOut();
+  }
 
 }
