@@ -11,29 +11,23 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class ProfilePage implements OnInit {
 
-  user =
-  {
-    email:"",
-    password:"",
-    name:"",
-    numberofreviews:0
-  }
-
   constructor(public afauth: AngularFireAuth,
-  public firebase: AngularFirestore,
+  public fs: AngularFirestore,
   private router: Router,
   private ar: ActivatedRoute) { }
 
   ngOnInit() {
-    this.afauth.onAuthStateChanged(user => {
-      if(user) {
-        console.log(user);
-        //this.user = user;
-      }
-      else {
-        console.log("not logged in");
-      }
-    })
+    var user = firebase.auth().currentUser;
+    console.log(user.uid);
+    // this.afauth.onAuthStateChanged(user => {
+    //   if(user) {
+    //     console.log(user);
+    //     //this.user = user;
+    //   }
+    //   else {
+    //     console.log("not logged in");
+    //   }
+    // })
   }
 
 }

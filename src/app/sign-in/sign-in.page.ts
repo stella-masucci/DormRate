@@ -5,6 +5,7 @@ import firebase from 'firebase/app';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
+import { ReviewService } from '../services/review.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -27,7 +28,8 @@ export class SignInPage implements OnInit {
     public firebase: AngularFirestore,
     private router: Router,
     private tc: ToastController,
-    private ar: ActivatedRoute
+    private ar: ActivatedRoute,
+    private rs: ReviewService
 
   ) { }
 
@@ -51,10 +53,8 @@ export class SignInPage implements OnInit {
         .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
             console.log(doc.id, "=>", doc.data());
-            //self.itemservice.setUsertype(t);
             self.router.navigate(["/tabs/dorms"]);
-            //self.itemservice.load_my_orders();
-            //self.itemservice.load_my_carts();
+            //self.rs.load();
           });
         })
         .catch(function(error) {

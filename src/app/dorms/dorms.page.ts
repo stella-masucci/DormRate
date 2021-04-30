@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ReviewService } from '../services/review.service';
+import {Observable} from 'rxjs';
+import { Dorm} from '../modal/Dorm';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -8,9 +13,13 @@ import { Component } from '@angular/core';
 })
 export class DormsPage {
 
-  dorms = [{name:"Bates House",averagestars:2,img:"https://sc.edu/about/offices_and_divisions/housing/images/grid_images/bateshouse255255.jpg"},
-{name:"650 Lincoln",averagestars:5, img:"https://sc.edu/about/offices_and_divisions/housing/images/grid_images/650lincoln255255.jpg"}]
+  private dorms: Observable<Dorm[]>;
 
-  constructor() {}
+//   dorms = [{name:"Bates House",averagestars:2,img:"https://sc.edu/about/offices_and_divisions/housing/images/grid_images/bateshouse255255.jpg"},
+// {name:"650 Lincoln",averagestars:5, img:"https://sc.edu/about/offices_and_divisions/housing/images/grid_images/650lincoln255255.jpg"}]
+
+  constructor(private rs: ReviewService) {
+    this.rs.load();
+  }
 
 }
