@@ -4,13 +4,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DormsPage } from './dorms.page';
 import { DormsPageRoutingModule } from './dorms-routing.module';
+import { StarRatingModule } from 'ionic5-star-rating';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    DormsPageRoutingModule
+    DormsPageRoutingModule,
+    StarRatingModule
   ],
   declarations: [DormsPage]
 })

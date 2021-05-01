@@ -7,7 +7,7 @@
       <ion-title text-left>
         Dorms
       </ion-title>
-      <ion-button (click)="viewlocation()">View Location</ion-button>
+      <ion-button (click)="viewLocation()">View Location</ion-button>
     </ion-row>
   </ion-toolbar>
 </ion-header>
@@ -15,12 +15,24 @@
 <ion-content >
 
   <ion-list>
-    <ion-item *ngFor="let dorm of (dorms | async)" >
+    <ion-item *ngFor="let dorm of (dorms | async)">
       <ion-thumbnail slot="start">
         <ion-img [src]="dorm.img"></ion-img>
       </ion-thumbnail>
       <ion-label (click)="viewDorm(dorm)">{{dorm.name}}</ion-label>
-      <ion-label>{{dorm.averagestars}} stars</ion-label>
+      <ionic5-star-rating #rating
+        activeIcon = "star"
+        defaultIcon = "star-outline"
+        halfIcon = "star-half"
+        halfStar = "true"
+        activeColor = "#f7ab00"
+        defaultColor = "#f7ab00"
+        readonly = "true"
+        rating = "{{dorm.averagestars ? dorm.averagestars : 0}}"
+        fontSize = "32px">
+      </ionic5-star-rating>
+      <ion-label>{{dorm.averagestars ? '(' + dorm.averagestars + ' / 5)' : ''}}</ion-label>
+      <ion-label>{{dorm.numberofreviews ? dorm.numberofreviews : 0}} reviews</ion-label>
     </ion-item>
     </ion-list>
 </ion-content>

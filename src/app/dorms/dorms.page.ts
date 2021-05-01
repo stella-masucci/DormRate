@@ -19,12 +19,16 @@ export class DormsPage {
     this.rs.load();
   }
 
-  viewlocation() {
+  viewLocation() {
     this.router.navigate(["/map"])
   }
 
   back() {
     this.router.navigate(["/home"]);
+  }
+
+  viewDorm() {
+    this.router.navigate(["/view-dorm-detail"]);
   }
 
 }
