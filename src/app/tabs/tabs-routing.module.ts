@@ -23,12 +23,7 @@ const routes: Routes = [
         path: 'logout',
         redirectTo: '/sign-in',
         pathMatch: 'full'
-      },
-      {
-        path: '',
-        redirectTo: 'dorms',
-        pathMatch: 'full'
-      }  
+      }
     ]
   },
   {

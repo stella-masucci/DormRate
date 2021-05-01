@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
 import { Observable } from 'rxjs';
 import { Dorm} from '../modal/Dorm';
-import { AngularFireAuth } from '@angular/fire/auth';
-
 
 @Component({
   selector: 'app-dorms',

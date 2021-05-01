@@ -1,8 +1,7 @@
 <ion-tabs>
-
   <ion-tab-bar slot="bottom">
     <ion-tab-button tab="dorms">
-      <ion-icon name="home-outline"></ion-icon>
+      <ion-icon name="business-outline"></ion-icon>
       <ion-label>Dorms</ion-label>
     </ion-tab-button>
 
@@ -16,9 +15,14 @@
       <ion-label>Profile</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="logout" (click)="logout()" *ngIf="userLoggedIn">
+    <ion-tab-button tab="logout" (click)="signout()" *ngIf="userLoggedIn">
       <ion-icon name="log-out"></ion-icon>
       <ion-label>Logout</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="login" (click)="signin()" *ngIf="!userLoggedIn">
+      <ion-icon name="log-in"></ion-icon>
+      <ion-label>Login</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 
