@@ -6,12 +6,12 @@
 </ion-grid>
 </ion-content> -->
 
-<ion-content padding>
+<ion-content padding class="homepage">
   <ion-grid style="height: 100%">
-      <ion-row class="welcome" justify-content-center align-items-center style="height: 100%; flex-direction: column">
+      <ion-row class="welcome" justify-content-center align-items-center style="flex-direction: column; color:azure;">
           Welcome to DormRate
       </ion-row>
-      <ion-row justify-content-center align-items-center style="height: 100%; flex-direction: column">
+      <ion-row justify-content-center align-items-center style="flex-direction: column">
       <div class="buttons">
       <ion-button (click)="createaccount()" color="primary">Create Account</ion-button>
       <ion-button (click)="signin()" color="success">Sign In</ion-button>
@@ -19,5 +19,4 @@
       </ion-row>
   </ion-grid>
 </ion-content>
-
-  <ion-footer justify-content-center align-items-center (click)="aboutus()">About Us</ion-footer>
+<ion-footer justify-content-center align-items-center (click)="aboutus()">About Us</ion-footer>
