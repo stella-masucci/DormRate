@@ -28,6 +28,7 @@
     "@ionic/storage-angular": "^3.0.6",
     "firebase": "^8.4.3",
     "firebase-admin": "^9.7.0",
+    "ionic4-star-rating": "^1.1.1",
     "ionic5-star-rating": "https://github.com/JeongJun-Lee/ionic5-star-rating/tarball/master",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

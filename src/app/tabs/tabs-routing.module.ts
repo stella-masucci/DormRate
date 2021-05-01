@@ -4,7 +4,7 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabs',
     component: TabsPage,
     children: [
       {
@@ -23,12 +23,17 @@ const routes: Routes = [
         path: 'logout',
         redirectTo: '/sign-in',
         pathMatch: 'full'
-      }
+      },
+      {
+        path: '',
+        redirectTo: '/tabs/dorms',
+        pathMatch: 'full'
+      }  
     ]
   },
   {
     path: '',
-    redirectTo: 'dorms',
+    redirectTo: '/tabs/dorms',
     pathMatch: 'full'
   }
 ];

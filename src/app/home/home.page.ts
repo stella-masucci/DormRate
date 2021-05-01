@@ -22,10 +22,6 @@ export class HomePage implements OnInit {
     this.router.navigate(["/sign-in"])
   }
 
-  viewdorms() {
-    this.router.navigate(["/tabs/dorms"])
-  }
-
   aboutus() {
     this.router.navigate(["/about"])
   }
