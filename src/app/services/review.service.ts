@@ -22,11 +22,9 @@ export class ReviewService {
   private userreviews: Observable<Review[]>;
   private userreviewsCollection: AngularFirestoreCollection<Review>;
 
-  constructor(public af: AngularFirestore, public afauth: AngularFireAuth) {
+  constructor(public af: AngularFirestore, public afAuth: AngularFireAuth) {
     console.log("initializing review service");
     this.load();
-    //get all reviews by user - check which uid == user.uid
-
   }
 
   load() {
@@ -72,7 +70,6 @@ export class ReviewService {
           }),
           take(1)
         ).subscribe();
-
   }
 
   getDorms(): Observable<Dorm[]> {
@@ -85,6 +82,18 @@ export class ReviewService {
   }
 
   getUserReviews(): Observable<Review[]> {
+    // load reviews of authUser
+    var authUser = firebase.auth().currentUser;
+    this.userreviews = this.af.collection<Review>('reviews', ref => ref.where('uid', '==', authUser.uid))
+      .snapshotChanges().pipe(
+        map(actions => {
+          return actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return {id, ...data};
+          });
+        })
+      );
     return this.userreviews;
   }
 

@@ -13,7 +13,28 @@
 
 <ion-row style="height: 80px"></ion-row>
 
-<ion-item>Name: {{user.name}} </ion-item>
-<ion-item>{{user.numberofreviews}} reviews</ion-item>
+<ion-item>Name: {{user?.name}} </ion-item>
+<ion-item *ngIf="(reviews | async) as reviews; else noreview">{{reviews.length}} reviews</ion-item>
+<ng-template #loading>
+  <ion-item>No review</ion-item>
+</ng-template>
+
+<ion-list>
+  <ion-item *ngFor="let review of (reviews | async)">
+    <ion-label>{{review.dormName}}</ion-label>
+    <ion-label>{{review.text}}</ion-label>
+    <ionic5-star-rating #rating
+        activeIcon = "star"
+        defaultIcon = "star-outline"
+        halfIcon = "star-half"
+        halfStar = "true"
+        activeColor = "#f7ab00"
+        defaultColor = "#f7ab00"
+        readonly = "true"
+        rating = "{{review.stars}}"
+        fontSize = "32px">
+      </ionic5-star-rating>
+  </ion-item>
+</ion-list>
 
 </ion-content>

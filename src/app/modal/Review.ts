@@ -4,5 +4,6 @@ export interface Review {
   text: string;
   createdAt: any;
   dormid: any;
+  dormName: string;
   uid: any;
 }

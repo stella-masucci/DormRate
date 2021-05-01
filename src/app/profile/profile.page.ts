@@ -3,6 +3,10 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { ReviewService } from '../services/review.service';
+import { User } from '../modal/User';
+import { Review } from '../modal/Review';
 
 @Component({
   selector: 'app-profile',
@@ -10,12 +14,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  private user : User;
+  private reviews: Observable<Review[]> = this.rs.getUserReviews();
 
   constructor(
     public afAuth: AngularFireAuth,
     public fs: AngularFirestore,
     private router: Router,
-    private ar: ActivatedRoute) 
+    private rs: ReviewService)
   { 
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
@@ -25,17 +31,20 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    var user = firebase.auth().currentUser;
-    console.log(user.uid);
-    // this.afauth.onAuthStateChanged(user => {
-    //   if(user) {
-    //     console.log(user);
-    //     //this.user = user;
-    //   }
-    //   else {
-    //     console.log("not logged in");
-    //   }
-    // })
+    var authUser = firebase.auth().currentUser;
+    console.log(authUser.uid);
+    var self = this;
+    firebase.firestore().collection("users").where("uid",'==', authUser.uid).limit(1)
+      .get()
+      .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+          console.log(doc.id, "=>", doc.data());
+          self.user = new User(doc.data().uid, doc.data().name);
+      });
+    })
+    .catch(function(error) {
+      console.log("Error getting documents:",error);
+    });
   }
 
 }
