@@ -53,7 +53,7 @@ export class SignInPage implements OnInit {
         .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
             console.log(doc.id, "=>", doc.data());
-            self.router.navigate(["/tabs/"]);
+            self.router.navigate(["/tabs/dorms"]);
             //self.rs.load();
           });
         })
@@ -99,7 +99,7 @@ export class SignInPage implements OnInit {
       // self.itemservice.setUsertype("visitor");
 
       this.toastMessage();
-      self.router.navigate(["/tabs/"]);
+      self.router.navigate(["/tabs/dorms"]);
     });
   }
 
