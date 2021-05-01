@@ -8,25 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-  userLoggedIn : boolean = false;
-  
+
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router
   ) {
     this.afAuth.authState.subscribe(auth => {
-      if (auth) {
-        this.userLoggedIn = true;
+      if (!auth) {
+        this.router.navigate(["/sign-in"]);
       }
     });
   }
 
-  signout() {
+  logout() {
     this.afAuth.signOut();
-  }
-
-  signin() {
-    this.router.navigate(["/sign-in"])
   }
 
 }
