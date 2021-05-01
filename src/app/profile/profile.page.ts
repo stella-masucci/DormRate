@@ -11,10 +11,18 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class ProfilePage implements OnInit {
 
-  constructor(public afauth: AngularFireAuth,
-  public fs: AngularFirestore,
-  private router: Router,
-  private ar: ActivatedRoute) { }
+  constructor(
+    public afAuth: AngularFireAuth,
+    public fs: AngularFirestore,
+    private router: Router,
+    private ar: ActivatedRoute) 
+  { 
+    this.afAuth.authState.subscribe(auth => {
+      if (!auth) {
+        this.router.navigate(["/sign-in"]);
+      }
+    });
+  }
 
   ngOnInit() {
     var user = firebase.auth().currentUser;
