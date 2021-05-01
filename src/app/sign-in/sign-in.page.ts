@@ -53,7 +53,7 @@ export class SignInPage implements OnInit {
         .then(function(querySnapshot) {
           querySnapshot.forEach(function(doc) {
             console.log(doc.id, "=>", doc.data());
-            self.router.navigate(["/tabs/dorms"]);
+            self.router.navigate(["/tabs/"]);
             //self.rs.load();
           });
         })
@@ -63,7 +63,7 @@ export class SignInPage implements OnInit {
   	})
   	.catch(error => {
       console.log(error);
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/sign-in"]);
       const t = document.createElement('ion-toast');
       t.message = "Incorrect email/password combo, or user does not exist.";
       t.color = "danger";
@@ -73,49 +73,43 @@ export class SignInPage implements OnInit {
   	});
   }
 
-   signup() {
-     this.router.navigate(["/create-account"])
-   }
+  signup() {
+    this.router.navigate(["/create-account"])
+  }
 
-   back() {
-     this.router.navigate(["/home"]);
-   }
+  back() {
+    this.router.navigate(["/home"]);
+  }
 
-   loginGoogle() {
-     // Using a popup.
-     var provider = new firebase.auth.GoogleAuthProvider();
-     var self = this;
-     provider.addScope('profile');
-     provider.addScope('email');
-     firebase.auth().signInWithPopup(provider).then(function(result) {
-       // This gives you a Google Access Token.
-     var cred = result.credential as firebase.auth.OAuthCredential;
-     var token = cred.accessToken;
-     // The signed-in user info.
-     var user = result.user;
-     // self.itemservice.setUID(user.uid);
-     // self.itemservice.load_my_orders();
-     // self.itemservice.load_my_carts();
-     // self.itemservice.setUsertype("visitor");
+  loginGoogle() {
+    // Using a popup.
+    var provider = new firebase.auth.GoogleAuthProvider();
+    var self = this;
+    provider.addScope('profile');
+    provider.addScope('email');
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a Google Access Token.
+      var cred = result.credential as firebase.auth.OAuthCredential;
+      var token = cred.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // self.itemservice.setUID(user.uid);
+      // self.itemservice.load_my_orders();
+      // self.itemservice.load_my_carts();
+      // self.itemservice.setUsertype("visitor");
 
-     const toast = document.createElement('ion-toast');
-     toast.message = 'Succesfully logged in with Google.';
-     toast.color = "success";
-     toast.duration = 2000;
-     document.body.appendChild(toast);
-     toast.present();
-     self.router.navigate(["/tabs/dorms"]);
- });
-   }
+      this.toastMessage();
+      self.router.navigate(["/tabs/"]);
+    });
+  }
 
   toastMessage() {
-  this.router.navigate(["/tabs/dorms"]);
-   const toast = document.createElement('ion-toast');
-   toast.message = 'Succesfully logged in.';
-   toast.color = "success";
-   toast.duration = 2000;
-   document.body.appendChild(toast);
-   return toast.present();
- }
+    const toast = document.createElement('ion-toast');
+    toast.message = 'Succesfully logged in.';
+    toast.color = "success";
+    toast.duration = 2000;
+    document.body.appendChild(toast);
+    toast.present();
+  }
 
 }

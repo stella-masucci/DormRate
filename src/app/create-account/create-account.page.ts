@@ -86,7 +86,6 @@ export class CreateAccountPage implements OnInit {
       }).then(function() {
         console.log('User Profile Updated Successfully');
         console.log("Hello " + currentUser.displayName);
-        //self.router.navigate(["/tabs/"]);
       }).catch(function(error) {
         console.log(error);
       });
@@ -97,7 +96,7 @@ export class CreateAccountPage implements OnInit {
         'numberofreviews': 0
       }).then(function(docRef) {
         console.log("usertype written with id: ", docRef.id);
-        self.router.navigate(["/tabs/dorms"]);
+        self.router.navigate(["/tabs/"]);
       }).catch(function(error) {
         console.error("Error adding document: ", error);
       });
