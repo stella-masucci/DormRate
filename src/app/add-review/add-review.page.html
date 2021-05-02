@@ -14,8 +14,8 @@
 
   <ion-item>
   <ion-label>Dorm</ion-label>
-    <ion-select placeholder="Select One" [(ngModel)]="review.dormName">
-      <ion-select-option *ngFor = "let dorm of (dorms | async)" value={{dorm.id}}>{{dorm.name}}</ion-select-option>
+  <ion-select [(ngModel)]="dorm" [compareWith]="compareWithFn" placeholder="Select One">
+    <ion-select-option *ngFor = "let d of (dorms | async)" [value]="d">{{d.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 

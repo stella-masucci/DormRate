@@ -10,7 +10,8 @@
 
 
   <ion-item>
-   <ion-textarea rows="7" name="review.text" [(ngModel)]="review.text" value="{{review.text}}"></ion-textarea>
+   <!-- <ion-textarea auto-grow="true" inputmode="text" rows="7" [(ngModel)]="review.text"></ion-textarea> -->
+   <ion-input type="text" [(ngModel)]="review.text"></ion-input>
   </ion-item>
 
 
@@ -25,7 +26,7 @@
       activeColor = "#f7ab00"
       defaultColor = "#f7ab00"
       readonly = "false"
-      rating = "{{review.stars}}"
+      rating = "review.stars"
       fontSize = "32px"
       formControlName="stars">
     </ionic5-star-rating>
