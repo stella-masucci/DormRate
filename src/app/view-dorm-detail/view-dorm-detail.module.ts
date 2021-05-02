@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { ViewDormDetailPageRoutingModule } from './view-dorm-detail-routing.module';
 
 import { ViewDormDetailPage } from './view-dorm-detail.page';
+import { StarRatingModule } from 'ionic5-star-rating';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ViewDormDetailPageRoutingModule
+    ViewDormDetailPageRoutingModule,
+    StarRatingModule
   ],
   declarations: [ViewDormDetailPage]
 })

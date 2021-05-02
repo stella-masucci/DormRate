@@ -9,4 +9,5 @@ export interface Dorm {
   averagestars: number;
   description: string;
   reviews: Observable<Review[]>;
+  favoritedby: string[];
 }

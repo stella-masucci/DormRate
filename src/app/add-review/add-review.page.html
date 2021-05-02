@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>add-review</ion-title>
+    <ion-title>Add a review</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-button (click)="back()">
+  <ion-icon name="arrow-back-outline"></ion-icon>
+</ion-button>
+
+<ion-list inset="true">
+
+  <ion-item>
+    <ion-label color="primary" fixed>Review</ion-label>
+   <ion-input [(ngModel)]="review.text" type="text"></ion-input>
+  </ion-item>
+
+<ion-item>
+    <form [formGroup]="starform">
+    <ionic5-star-rating #rating
+      activeIcon = "star"
+      defaultIcon = "star-outline"
+      halfIcon = "star-half"
+      halfStar = "true"
+      activeColor = "#f7ab00"
+      defaultColor = "#f7ab00"
+      readonly = "false"
+      rating = "0"
+      fontSize = "32px"
+      formControlName="stars">
+    </ionic5-star-rating>
+   </form>
+
+  </ion-item>
+
+</ion-list>
+
+<ion-button (click)="submitItem()">Submit</ion-button>
 
 </ion-content>

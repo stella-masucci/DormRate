@@ -1,9 +1,36 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>view-dorm-detail</ion-title>
+    <ion-row>
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title text-left>
+        <!-- {{dorm.name}} -->
+      </ion-title>
+      <ion-button (click)="viewLocation()">View Location</ion-button>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<!-- <div *ngFor='let d of (dorms | async)'> -->
+  <ion-item>{{dorm.name}}</ion-item>
+  <ion-item>
+  <ionic5-star-rating #rating
+    activeIcon = "star"
+    defaultIcon = "star-outline"
+    halfIcon = "star-half"
+    halfStar = "true"
+    activeColor = "#f7ab00"
+    defaultColor = "#f7ab00"
+    readonly = "true"
+    rating = "{{dorm.averagestars ? dorm.averagestars : 0}}"
+    fontSize = "32px">
+  </ionic5-star-rating>
+  </ion-item>
+<ion-item>{{dorm.description}}</ion-item>
+<ion-img [src]="dorm.img"></ion-img>
+<!-- </div> -->
 
 </ion-content>
