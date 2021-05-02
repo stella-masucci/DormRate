@@ -7,7 +7,7 @@
       <ion-title text-left>
         <!-- {{dorm.name}} -->
       </ion-title>
-      <ion-button (click)="viewLocation()">View Location</ion-button>
+      <ion-button (click)="viewLocation()">View Housing Location</ion-button>
     </ion-row>
   </ion-toolbar>
 </ion-header>
@@ -43,13 +43,15 @@
 <!-- </div> -->
   <!-- User Reviews -->
   <ion-item>
-    <ion-text>
+    <ion-text slot="start">
       <h1>User Reviews</h1>
     </ion-text>
+    <ion-button color="success" (click)="addReview(dorm)" slot="end">Leave a Review?</ion-button>
   </ion-item>
+
   <ion-item *ngFor="let review of (reviews | async)">
-    <ion-text>{{review.text}}</ion-text>
-    <ionic5-star-rating #rating
+    <ion-text slot="start">{{review.text}}</ion-text>
+    <ionic5-star-rating #rating slot="end"
                         activeIcon = "star"
                         defaultIcon = "star-outline"
                         activeColor = "#f7ab00"
