@@ -29,8 +29,35 @@
     fontSize = "32px">
   </ionic5-star-rating>
   </ion-item>
-<ion-item>{{dorm.description}}</ion-item>
-<ion-img [src]="dorm.img"></ion-img>
+  <ion-item>
+    <ion-text>
+      <h1>Basic Information</h1>
+    </ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-text><p>{{dorm.description}}</p></ion-text>
+  </ion-item>
+  <ion-item>
+    <ion-img [src]="dorm.img"></ion-img>
+  </ion-item>
 <!-- </div> -->
+  <!-- User Reviews -->
+  <ion-item>
+    <ion-text>
+      <h1>User Reviews</h1>
+    </ion-text>
+  </ion-item>
+  <ion-item *ngFor="let review of (reviews | async)">
+    <ion-text>{{review.text}}</ion-text>
+    <ionic5-star-rating #rating
+                        activeIcon = "star"
+                        defaultIcon = "star-outline"
+                        activeColor = "#f7ab00"
+                        defaultColor = "#f7ab00"
+                        readonly = "true"
+                        rating = "{{review.stars ? review.stars : 0}}"
+                        fontSize = "32px">
+    </ionic5-star-rating>
+  </ion-item>
 
 </ion-content>

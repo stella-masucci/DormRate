@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item *ngFor="let dorm of (dorms | async)">
       <ion-thumbnail slot="start">
-        <ion-img [src]="dorm.img"></ion-img>
+        <ion-img [src]="dorm.thumbnail"></ion-img>
       </ion-thumbnail>
       <ion-label (click)="viewDorm(dorm)">{{dorm.name}}</ion-label>
       <ionic5-star-rating #rating

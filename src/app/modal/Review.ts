@@ -2,8 +2,7 @@ export interface Review {
   id?: any;
   stars: number;
   text: string;
-  createdAt: any;
-  dormid: any;
+  dormID: string;
   dormName: string;
-  uid: any;
+  uid: string;
 }

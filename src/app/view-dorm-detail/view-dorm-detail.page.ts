@@ -13,17 +13,18 @@ import {AngularFirestore, AngularFirestoreCollection, DocumentReference} from '@
   styleUrls: ['./view-dorm-detail.page.scss'],
 })
 export class ViewDormDetailPage implements OnInit {
-
- dorm=null;
-  params={};
+  dorm = null;
+  params = {};
+  private reviews: Observable<Review[]>;
 
   constructor(private rs: ReviewService, private router: Router, private ar:ActivatedRoute,
   private af: AngularFirestore) { }
 
   ngOnInit() {
     this.ar.params.subscribe(
-  		param=>{
+      param => {
   			this.dorm = param;
+  			this.reviews = this.rs.getDormReviews(param.id);
   		})
   }
 

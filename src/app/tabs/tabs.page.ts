@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class TabsPage {
   userLoggedIn : boolean = false;
-  
+
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router
@@ -23,10 +23,6 @@ export class TabsPage {
 
   signout() {
     this.afAuth.signOut();
-  }
-
-  signin() {
-    this.router.navigate(["/sign-in"])
   }
 
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReviewService } from '../services/review.service';
 import { Observable } from 'rxjs';
-import { Dorm} from '../modal/Dorm';
+import { Dorm } from '../modal/Dorm';
 
 @Component({
   selector: 'app-dorms',
