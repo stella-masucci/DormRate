@@ -14,6 +14,8 @@ import {Dorm} from '../modal/Dorm';
 })
 export class ReviewService {
 
+  private user:User;
+
   private reviewCollection: AngularFirestoreCollection<Review>;
   private dorms: Observable<Dorm[]>;
   private dormCollection: AngularFirestoreCollection<Dorm>;
@@ -40,16 +42,11 @@ export class ReviewService {
             })
           );
 
-          // var user = firebase.auth.currentUser;
-          // var uid = user.uid;
-          // console.log(user);
-          //this.favoriteslist = user.favorites;
-
           //loads reviews for each dorm
           this.dorms.pipe(
           tap(dormsarray => {
              dormsarray.forEach(d => {
-
+               console.log("cycling through ",d.name);
                this.reviewCollection = this.af.collection<Review>('reviews',ref =>
                  ref.where('dormid','==',d.id));
                d.reviews = this.reviewCollection.snapshotChanges().pipe(
@@ -61,10 +58,21 @@ export class ReviewService {
                    });
                  })
                );
-               //loads favorites
-               // if(this.favoriteslist.includes(d.id)) {
-               //   this.favorites.push(d);
-               // }
+
+               let sum = 0;
+               let count = 0;
+               d.reviews.pipe(
+                 tap(reviewarray => {
+                   reviewarray.forEach(r => {
+                     console.log(r.text,r.stars);
+                     sum = sum + r.stars;
+                     count++;
+                   });
+                 }),
+                 take(1)
+               ).subscribe();
+               d.averagestars = sum/count;
+               console.log("setting average stars to ",d.averagestars);
 
              });
           }),
@@ -78,6 +86,18 @@ export class ReviewService {
   }
 
   getFavorites(): Dorm[] {
+    var authUser = firebase.auth().currentUser;
+    this.dorms.pipe(
+    tap(dormsarray => {
+       dormsarray.forEach(d => {
+         if(d!= null && d.favoritedby.includes(authUser.uid) && !(this.favorites.includes(d))) {
+           this.favorites.push(d);
+         }
+       });
+    }),
+    take(1)
+    ).subscribe();
+    console.log(this.favorites);
     return this.favorites;
   }
 
@@ -96,6 +116,7 @@ export class ReviewService {
       );
     return this.userreviews;
   }
+
 
 
 

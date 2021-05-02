@@ -14,7 +14,6 @@ export class DormsPage {
   private dorms: Observable<Dorm[]> = this.rs.getDorms();
 
   constructor(private rs: ReviewService, private router: Router) {
-    this.rs.load();
   }
 
   viewLocation() {

@@ -3,7 +3,7 @@ export class User {
   uid: string;
   name: string;
   numberofreviews: number;
-  favorites: []; //array of dormids
+  favorites: string[]; //array of dormids
 
   constructor(uid : string, name : string) {
     this.uid = uid;

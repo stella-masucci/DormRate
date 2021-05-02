@@ -22,7 +22,7 @@ export class ProfilePage implements OnInit {
     public fs: AngularFirestore,
     private router: Router,
     private rs: ReviewService)
-  { 
+  {
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
         this.router.navigate(["/sign-in"]);
@@ -45,6 +45,11 @@ export class ProfilePage implements OnInit {
     .catch(function(error) {
       console.log("Error getting documents:",error);
     });
+  }
+
+  goToFavorites() {
+    console.log("go to favorites");
+    this.router.navigate(["/favorites"]);
   }
 
 }

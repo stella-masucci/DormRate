@@ -1,9 +1,37 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>favorites</ion-title>
+    <ion-row>
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title text-left>
+        Favorites
+      </ion-title>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
 
+  <ion-list>
+    <ion-item *ngFor="let f of favorites">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="f.img"></ion-img>
+      </ion-thumbnail>
+      <ion-label (click)="viewDorm(f)">{{f.name}}</ion-label>
+      <ionic5-star-rating #rating
+        activeIcon = "star"
+        defaultIcon = "star-outline"
+        halfIcon = "star-half"
+        halfStar = "true"
+        activeColor = "#f7ab00"
+        defaultColor = "#f7ab00"
+        readonly = "true"
+        rating = "{{f.averagestars ? f.averagestars : 0}}"
+        fontSize = "32px">
+      </ionic5-star-rating>
+      <ion-label>{{f.averagestars ? '(' + f.averagestars + ' / 5)' : ''}}</ion-label>
+      <ion-label>{{f.numberofreviews ? f.numberofreviews : 0}} reviews</ion-label>
+    </ion-item>
+    </ion-list>
 </ion-content>
