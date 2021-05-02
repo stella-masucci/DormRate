@@ -4,17 +4,20 @@
      text-align: center;
      align-items: center;
      position: absolute;
-     top: 25%;
+     top: 20%;
      font-size: 22px;
      padding-left: 10px;
      padding-right: 10px;
 }
 
 .link {
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  align-items: center;
   position: absolute;
   top: 60%;
   font-size: 22px;
-  align-items: center;
-  align-self: center;
-  text-decoration: underline;
+  padding-left: 10px;
+  padding-right: 10px;
 }

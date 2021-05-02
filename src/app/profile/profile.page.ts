@@ -40,11 +40,13 @@ export class ProfilePage implements OnInit {
         querySnapshot.forEach(function(doc) {
           console.log(doc.id, "=>", doc.data());
           self.user = new User(doc.data().uid, doc.data().name);
+          console.log(doc.data().name);
       });
     })
     .catch(function(error) {
       console.log("Error getting documents:",error);
     });
+    console.log(this.user.name);
   }
 
   goToFavorites() {
