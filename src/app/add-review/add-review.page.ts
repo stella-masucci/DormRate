@@ -5,6 +5,8 @@ import { Review } from '../modal/Review';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReviewService} from '../services/review.service';
 import firebase from 'firebase/app';
+import { Observable } from 'rxjs';
+import { Dorm} from '../modal/Dorm';
 
 @Component({
   selector: 'app-add-review',
@@ -25,6 +27,8 @@ review: Review = {
   starform=null;
 
   user:any;
+
+  private dorms: Observable<Dorm[]> = this.rs.getDorms();
 
   constructor(
     public afAuth: AngularFireAuth,
@@ -53,6 +57,10 @@ review: Review = {
       this.router.navigateByUrl('/tabs/profile');
     }, err => {});
 
+  }
+
+  back() {
+    this.router.navigate([])
   }
 
 

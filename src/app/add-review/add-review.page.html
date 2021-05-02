@@ -13,11 +13,20 @@
 <ion-list inset="true">
 
   <ion-item>
-    <ion-label color="primary" fixed>Review</ion-label>
-   <ion-input [(ngModel)]="review.text" type="text"></ion-input>
+  <ion-label>Dorm</ion-label>
+    <ion-select placeholder="Select One">
+      <ion-select-option *ngFor = "let dorm of (dorms | async)" value={{dorm.id}}>{{dorm.name}}</ion-select-option>
+    </ion-select>
   </ion-item>
 
+  <ion-item>
+    <!-- <ion-label color="primary" fixed>Review</ion-label> -->
+   <ion-textarea rows="7" [(ngModel)]="review.text" placeholder="Write your review here..."></ion-textarea>
+  </ion-item>
+
+
 <ion-item>
+  <ion-label>How many stars?</ion-label>
     <form [formGroup]="starform">
     <ionic5-star-rating #rating
       activeIcon = "star"
@@ -37,6 +46,6 @@
 
 </ion-list>
 
-<ion-button (click)="submitItem()">Submit</ion-button>
+<ion-button expand="block" (click)="submitItem()">Submit</ion-button>
 
 </ion-content>
