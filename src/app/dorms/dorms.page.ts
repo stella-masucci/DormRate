@@ -24,8 +24,8 @@ export class DormsPage {
     this.router.navigate(["/home"]);
   }
 
-  viewDorm() {
-    this.router.navigate(["/view-dorm-detail"]);
+  viewDorm(dorm) {
+    this.router.navigate(["/view-dorm-detail",dorm]);
   }
 
 }
