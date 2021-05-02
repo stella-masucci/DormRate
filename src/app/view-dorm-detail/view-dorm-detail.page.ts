@@ -32,4 +32,7 @@ export class ViewDormDetailPage implements OnInit {
     this.router.navigate(["/tabs/dorms"]);
   }
 
+  addReview(dorm) {
+    this.router.navigate(["/add-review",dorm]);
+  }
 }
