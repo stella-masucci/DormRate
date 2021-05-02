@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Review } from '../modal/Review';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ReviewService} from '../services/review.service';
@@ -23,15 +23,19 @@ review: Review = {
   uid: ''
 };
 
-  starform=null;
+  starform = null;
+  user : any;
+  dorm = null;
+  params = {};
 
-  user:any;
+  compareWith: (o1: any, o2: any) => boolean;
 
   private dorms: Observable<Dorm[]> = this.rs.getDorms();
 
   constructor(
     public afAuth: AngularFireAuth,
     private router: Router,
+    private ar:ActivatedRoute,
     private rs:ReviewService
   ) {
     this.afAuth.authState.subscribe(auth => {
@@ -43,25 +47,37 @@ review: Review = {
     this.starform = new FormGroup({
        stars: new FormControl()
     });
+
+    this.compareWith = this.compareWithFn;
   }
 
   ngOnInit() {
+    this.ar.params.subscribe(
+      param => {
+        this.dorm = param;
+        console.log(this.dorm);
+      });
   }
 
   submitItem() {
     this.user = firebase.auth().currentUser;
     this.review.uid = this.user.uid;
+    this.review.dormID = this.dorm.id;
+    this.review.dormName = this.dorm.name;
+    console.log(this.review);
     this.rs.addReview(this.review).then((doc) => {
       console.log(doc);
-      this.router.navigateByUrl('/tabs/profile');
-    }, err => {});
-
+      this.router.navigate(["/view-dorm-detail", this.dorm]);
+    }, err => {
+      console.log(err);
+    });
   }
 
   back() {
-    this.router.navigate([])
+    this.router.navigate(["/view-dorm-detail", this.dorm]);
   }
 
-
-
+  compareWithFn = (o1, o2) => {
+    return o1.id === o2.id;
+  };
 }
