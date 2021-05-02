@@ -17,7 +17,7 @@ export class ReviewService {
   private user:User;
 
   private reviewCollection: AngularFirestoreCollection<Review>;
-  private allreviews: AngularFirestoreCollection<Review>;
+  private allreviews: Observable<Review[]>;
   private dorms: Observable<Dorm[]>;
   private dormCollection: AngularFirestoreCollection<Dorm>;
   private favoriteslist= [];
@@ -43,15 +43,28 @@ export class ReviewService {
             })
           );
 
+          this.reviewCollection = this.af.collection<Review>('reviews');
+          this.allreviews = this.reviewCollection.snapshotChanges().pipe(
+                      map(actions => {
+                        return actions.map(a => {
+                          const data = a.payload.doc.data();
+                          const id = a.payload.doc.id;
+                          console.log("review ", id, " => " , data);
+                          return { id, ...data };
+                        });
+                      })
+                    );
+
           //loads reviews for each dorm
           this.dorms.pipe(
           tap(dormsarray => {
              dormsarray.forEach(d => {
-               this.reviewCollection = this.af.collection<Review>('reviews',ref =>
-                 ref.where('dormid','==',d.id));
-               d.reviews = this.reviewCollection.snapshotChanges().pipe(
+              this.reviewCollection = this.af.collection<Review>('reviews',ref =>
+                ref.where('dormID','==',d.id));
+              d.reviews = this.reviewCollection.snapshotChanges().pipe(
                  map(actions => {
                    return actions.map(a => {
+                     console.log(d.id, " => ", a.payload.doc.data());
                      const data = a.payload.doc.data();
                      const id = a.payload.doc.id;
                      return { id, ...data};
@@ -78,8 +91,6 @@ export class ReviewService {
           }),
           take(1)
         ).subscribe();
-
-        this.allreviews = this.af.collection<Review>('reviews');
   }
 
   getDorms(): Observable<Dorm[]> {
@@ -112,6 +123,7 @@ export class ReviewService {
           return actions.map(a => {
             const data = a.payload.doc.data();
             const id = a.payload.doc.id;
+            console.log("review ", id, " => ", a.payload.doc.data());
             return {id, ...data};
           });
         })
@@ -119,9 +131,23 @@ export class ReviewService {
     return this.userreviews;
   }
 
+  getDormReviews(dormid: string): Observable<Review[]> {
+      // load reviews of dorm
+      return this.af.collection<Review>('reviews', ref => ref.where('dormID', '==', dormid))
+        .snapshotChanges().pipe(
+          map(actions => {
+            return actions.map(a => {
+              const data = a.payload.doc.data();
+              const id = a.payload.doc.id;
+              return {id, ...data};
+            });
+          })
+        );
+    }
+
   addReview(review: Review): Promise<DocumentReference> {
     var user1 = firebase.auth().currentUser;
-    return this.allreviews.add(review);
+    return this.reviewCollection.add(review);
   }
 
 

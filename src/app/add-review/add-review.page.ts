@@ -16,12 +16,11 @@ import { Dorm} from '../modal/Dorm';
 export class AddReviewPage implements OnInit {
 
 review: Review = {
-  stars:0,
+  stars: 0,
   text: '',
-  createdAt: '',
-  dormid: 0,
+  dormID: '',
   dormName: '',
-  uid:''
+  uid: ''
 };
 
   starform=null;
