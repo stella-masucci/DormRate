@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>edit-review</ion-title>
+    <ion-title>Edit your review of {{review.dormName}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+<ion-list inset="true">
+
+
+  <ion-item>
+   <ion-textarea rows="7" name="review.text" [(ngModel)]="review.text" value="{{review.text}}"></ion-textarea>
+  </ion-item>
+
+
+<ion-item>
+  <ion-label>How many stars?</ion-label>
+    <form [formGroup]="starform">
+    <ionic5-star-rating #rating
+      activeIcon = "star"
+      defaultIcon = "star-outline"
+      halfIcon = "star-half"
+      halfStar = "true"
+      activeColor = "#f7ab00"
+      defaultColor = "#f7ab00"
+      readonly = "false"
+      rating = "{{review.stars}}"
+      fontSize = "32px"
+      formControlName="stars">
+    </ionic5-star-rating>
+   </form>
+
+  </ion-item>
+
+</ion-list>
+
+<ion-button expand="block" (click)="updateItem()">Update</ion-button>
 
 </ion-content>

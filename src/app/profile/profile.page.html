@@ -21,8 +21,8 @@
 
 <ion-list>
   <ion-item *ngFor="let review of (reviews | async)">
-    <ion-label>{{review.dormName}}</ion-label>
-    <ion-label>{{review.text}}</ion-label>
+    <ion-label (click)="editReview(review)">{{review.dormName}}</ion-label>
+    <ion-label (click)="editReview(review)">{{review.text}}</ion-label>
     <ionic5-star-rating #rating
         activeIcon = "star"
         defaultIcon = "star-outline"

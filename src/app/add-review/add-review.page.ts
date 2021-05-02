@@ -55,11 +55,6 @@ review: Review = {
       console.log(doc);
       this.router.navigateByUrl('/tabs/profile');
     }, err => {});
-
-  }
-
-  back() {
-    this.router.navigate([])
   }
 
 

@@ -52,4 +52,8 @@ export class ProfilePage implements OnInit {
     this.router.navigate(["/favorites"]);
   }
 
+  editReview(review) {
+    this.router.navigate(["/edit-review",review])
+  }
+
 }
