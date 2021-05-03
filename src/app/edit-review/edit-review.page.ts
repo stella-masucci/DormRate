@@ -45,7 +45,8 @@ export class EditReviewPage implements OnInit {
   }
 
   ngAfterViewInit(): void {
-  const id = this.ar.snapshot.paramMap.get('review');
+  const id = this.ar.snapshot.paramMap.get('id');
+  console.log(id);
   if(id) {
     this.rs.getReview(id).subscribe(reviewData => {
       this.review = reviewData;
