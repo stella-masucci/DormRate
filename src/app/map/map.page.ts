@@ -46,7 +46,7 @@ export class MapPage implements OnInit {
     let latLng = new google.maps.LatLng(34.0374295, -81.077653);
     let mapOptions = {
       center: latLng,
-      zoom: 10,
+      zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -58,7 +58,7 @@ export class MapPage implements OnInit {
       tap(dormArray => {
         dormArray.forEach(d => {
           self.addMarker(d.geopoint.latitude, d.geopoint.longitude, d.name, d.address);
-          if (self.dorm) {
+          if (self.dorm && self.dorm.id ) {
             if (d.id == self.dorm.id) {
               console.log(d.geopoint.latitude, d.geopoint.longitude);
               let latLngDorm = new google.maps.LatLng(d.geopoint.latitude, d.geopoint.longitude);
