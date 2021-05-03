@@ -83,7 +83,7 @@ review: Review = {
   };
 
   logRatingChange(rating){
-        console.log("changed rating: ",rating);
+        console.log("changed rating: ", rating);
         this.review.stars = rating;
         console.log(this.review.stars);
     }

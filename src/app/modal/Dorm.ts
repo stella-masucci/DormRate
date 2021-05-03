@@ -9,6 +9,7 @@ export interface Dorm {
   averagestars: number;
   description: string;
   geopoint: any;
+  address: string;
   reviews: Observable<Review[]>;
   favoritedby: string[];
 }

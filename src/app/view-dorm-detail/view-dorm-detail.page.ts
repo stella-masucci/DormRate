@@ -33,6 +33,10 @@ export class ViewDormDetailPage implements OnInit {
   }
 
   addReview(dorm) {
-    this.router.navigate(["/add-review",dorm]);
+    this.router.navigate(["/add-review", dorm]);
+  }
+
+  viewLocation() {
+    this.router.navigate(["/map", this.dorm])
   }
 }

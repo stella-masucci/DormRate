@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { ReviewService } from '../services/review.service';
@@ -20,10 +20,12 @@ export class MapPage implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   private dorms: Observable<Dorm[]> = this.rs.getDorms();
+  dorm = null;
 
   constructor(
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
+    private ar: ActivatedRoute,
     private router: Router,
     private rs: ReviewService) {
   }
@@ -32,7 +34,12 @@ export class MapPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.loadMap();
+    this.ar.params.subscribe(
+      param => {
+        this.dorm = param;
+        this.loadMap();
+        console.log(this.dorm);
+      });
   }
 
   loadMap() {
@@ -50,9 +57,18 @@ export class MapPage implements OnInit {
     this.dorms.pipe(
       tap(dormArray => {
         dormArray.forEach(d => {
-          self.addMarker(d.geopoint.latitude, d.geopoint.longitude, d.name);
-          bounds.extend(new google.maps.LatLng(d.geopoint.latitude, d.geopoint.longitude));
-          self.map.fitBounds(bounds);
+          self.addMarker(d.geopoint.latitude, d.geopoint.longitude, d.name, d.address);
+          if (self.dorm) {
+            if (d.id == self.dorm.id) {
+              console.log(d.geopoint.latitude, d.geopoint.longitude);
+              let latLngDorm = new google.maps.LatLng(d.geopoint.latitude, d.geopoint.longitude);
+              self.map.setCenter(latLngDorm);
+              self.map.setZoom(18);
+            }
+          } else {
+            bounds.extend(new google.maps.LatLng(d.geopoint.latitude, d.geopoint.longitude));
+            self.map.fitBounds(bounds);
+          }
         });
       }),
       // execute only once and complete the observable
@@ -60,13 +76,13 @@ export class MapPage implements OnInit {
     ).subscribe();
   }
 
-  addMarker(lat : number, lon : number, name : string) {
+  addMarker(lat : number, lon : number, name : string, address : string) {
     let marker = new google.maps.Marker({
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: new google.maps.LatLng(lat, lon)
     });
-    this.addInfoWindow(marker, name);
+    this.addInfoWindow(marker, "<strong>" + name + "</strong><br/>" + address);
   }
 
   addInfoWindow(marker, content) {
