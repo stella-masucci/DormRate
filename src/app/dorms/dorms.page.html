@@ -1,14 +1,14 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-row>
       <ion-button (click)="back()">
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
       <ion-title text-left>
         Dorms
       </ion-title>
-      <ion-buttons slot="end">
-        <ion-button slot="end"(click)="viewLocation()">View Locations</ion-button>
-      </ion-buttons>
+      <ion-button (click)="viewLocation()">View Locations</ion-button>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
