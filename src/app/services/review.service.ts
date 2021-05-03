@@ -119,6 +119,7 @@ export class ReviewService {
   getUserReviews(): Observable<Review[]> {
     // load reviews of authUser
     var authUser = firebase.auth().currentUser;
+    console.log("get reviews of ", authUser.displayName);
     this.userreviews = this.af.collection<Review>('reviews', ref => ref.where('uid', '==', authUser.uid))
       .snapshotChanges().pipe(
         map(actions => {
@@ -167,17 +168,6 @@ export class ReviewService {
       })
     );
   }
-
-  setName(name:string) {
-    this.name = name;
-  }
-
-  getName(): string {
-    return this.name;
-  }
-
-
-
 
   //add a favorite
   //remove a favorite
