@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Review } from '../modal/Review';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl,FormBuilder } from '@angular/forms';
 import { ReviewService} from '../services/review.service';
 import firebase from 'firebase/app';
 import { Observable } from 'rxjs';
@@ -36,7 +36,8 @@ review: Review = {
     public afAuth: AngularFireAuth,
     private router: Router,
     private ar:ActivatedRoute,
-    private rs:ReviewService
+    private rs:ReviewService,
+    private formBuilder: FormBuilder
   ) {
     this.afAuth.authState.subscribe(auth => {
       if (!auth) {
@@ -80,4 +81,10 @@ review: Review = {
   compareWithFn = (o1, o2) => {
     return o1.id === o2.id;
   };
+
+  logRatingChange(rating){
+        console.log("changed rating: ",rating);
+        this.review.stars = rating;
+        console.log(this.review.stars);
+    }
 }

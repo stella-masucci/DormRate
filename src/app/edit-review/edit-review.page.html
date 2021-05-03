@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Edit your review of {{review.dormName}}</ion-title>
+    <ion-row>
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+      <ion-title>Edit your review of {{review.dormName}}</ion-title>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
@@ -28,6 +33,7 @@
       readonly = "false"
       rating = "review.stars"
       fontSize = "32px"
+      (ratingChanged)="logRatingChange($event)"
       formControlName="stars">
     </ionic5-star-rating>
    </form>
