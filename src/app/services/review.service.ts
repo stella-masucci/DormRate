@@ -150,7 +150,11 @@ export class ReviewService {
     return this.reviewCollection.add(review);
   }
 
-
+  editReview(review: Review): Promise<void> {
+    return this.reviewCollection.doc(review.id).update({id: review.id, stars:review.stars, text:
+      review.text, dormID:review.dormID, dormName: review.dormName,
+    uid:review.uid});
+  }
 
 
 

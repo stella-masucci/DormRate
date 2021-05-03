@@ -14,20 +14,19 @@
 
   <ion-item>
   <ion-label>Dorm</ion-label>
-    <ion-select [(ngModel)]="dorm" [compareWith]="compareWithFn" placeholder="Select One">
-      <ion-select-option *ngFor = "let d of (dorms | async)" [value]="d">{{d.name}}</ion-select-option>
+  <ion-select [(ngModel)]="dorm" [compareWith]="compareWithFn" placeholder="Select One">
+    <ion-select-option *ngFor = "let d of (dorms | async)" [value]="d">{{d.name}}</ion-select-option>
     </ion-select>
   </ion-item>
 
   <ion-item>
-    <!-- <ion-label color="primary" fixed>Review</ion-label> -->
-   <ion-textarea rows="7" [(ngModel)]="review.text" placeholder="Write your review here..."></ion-textarea>
+   <ion-textarea rows="7" name="review.text" [(ngModel)]="review.text" placeholder="Write your review here..."></ion-textarea>
   </ion-item>
 
 
 <ion-item>
   <ion-label>How many stars?</ion-label>
-    <form [formGroup]="starform">
+    <form name="stars" [formGroup]="starform">
     <ionic5-star-rating #rating
       activeIcon = "star"
       defaultIcon = "star-outline"
