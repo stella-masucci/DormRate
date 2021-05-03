@@ -75,11 +75,7 @@ review: Review = {
   }
 
   back() {
-    if (this.dorm && this.dorm.id) {
-      this.router.navigate(["/view-dorm-detail", this.dorm]);
-    } else {
-      this.router.navigate(["/tabs/dorms"]);
-    }
+    this.router.navigate(["/view-dorm-detail", this.dorm]);
   }
 
   compareWithFn = (o1, o2) => {

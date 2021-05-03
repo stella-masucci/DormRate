@@ -15,7 +15,7 @@ import { Review } from '../modal/Review';
 })
 export class ProfilePage implements OnInit {
   private user : User;
-  private name = '';
+  private name='';
   private reviews: Observable<Review[]> = this.rs.getUserReviews();
 
   constructor(
@@ -33,8 +33,7 @@ export class ProfilePage implements OnInit {
 
   ngOnInit() {
     var authUser = firebase.auth().currentUser;
-    console.log(authUser.uid, authUser.displayName);
-    this.name = authUser.displayName;
+    console.log(authUser.uid);
     var self = this;
     firebase.firestore().collection("users").where("uid",'==', authUser.uid).limit(1)
       .get()
@@ -42,7 +41,6 @@ export class ProfilePage implements OnInit {
         querySnapshot.forEach(function(doc) {
           console.log(doc.id, "=>", doc.data());
           self.user = new User(doc.data().uid, doc.data().name);
-          self.name = doc.data().name;
           console.log("got to line 43");
           console.log(doc.data().name);
       });
@@ -50,7 +48,7 @@ export class ProfilePage implements OnInit {
     .catch(function(error) {
       console.log("Error getting documents:",error);
     });
-    // this.name = this.rs.getName();
+    this.name = this.rs.getName();
   }
 
   goToFavorites() {

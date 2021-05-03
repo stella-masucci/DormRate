@@ -42,6 +42,8 @@ export class SignInPage implements OnInit {
     console.log("Signing in");
     this.afauth.signInWithEmailAndPassword(email, password).then(user => {
   		// navigate to user profile
+  		console.log(user.user.displayName);
+      this.rs.setName(user.user.displayName);
   		var user1 = firebase.auth().currentUser;
       //this.itemservice.setUID(user.user.uid);
       this.toastMessage();
@@ -94,7 +96,7 @@ export class SignInPage implements OnInit {
       // The signed-in user info.
       var user = result.user;
 
-      self.toastMessage();
+      this.toastMessage();
       self.router.navigate(["/tabs/dorms"]);
     });
   }

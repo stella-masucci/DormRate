@@ -15,7 +15,7 @@
 <ion-content>
 
 <!-- <div *ngFor='let d of (dorms | async)'> -->
-  <ion-item><ion-text color="danger" ><h1>{{dorm.name}}</h1></ion-text></ion-item>
+  <ion-item>{{dorm.name}}</ion-item>
   <ion-item>
   <ionic5-star-rating #rating
     activeIcon = "star"
@@ -31,7 +31,7 @@
   </ion-item>
   <ion-item>
     <ion-text>
-      <h2>Basic Information</h2>
+      <h1>Basic Information</h1>
     </ion-text>
   </ion-item>
   <ion-item>
@@ -44,7 +44,7 @@
   <!-- User Reviews -->
   <ion-item>
     <ion-text slot="start">
-      <h2>User Reviews</h2>
+      <h1>User Reviews</h1>
     </ion-text>
     <ion-button color="success" (click)="addReview(dorm)" slot="end">Leave a Review?</ion-button>
   </ion-item>
