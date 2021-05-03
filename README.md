@@ -6,21 +6,21 @@ These are the pages that we intend to have in the app:
 - Message that says "Welcome to DormRate"
 - Has standard home page features:
   - a button that says "Login" that leads to the Login Page
-  - a button that says "New User? Create Account" that leads to the Create Account page
+  - a button that says "Create Account" that leads to the Create Account page
+  - has "Dorm Listing" button that leads to the Dorm List Page
 - Has a button at the very bottom of the page that says "About Us" that leads to the About Us page
 
 **#2) About Us Page:**
-- Explains the reason that the app was created: "This project was created in order to allow students at the University of South Carolina better understand their on-campus living options when they get onto campus, and get a 
-better idea of the communities they're moving into from the perspective of the students"
-- Has the link to the GitHub repository for people interested in the creation of the project
+- Explains the reason that the app was created: "This project was created in order to allow students at the University of South Carolina better understand their on-campus living options when they get onto campus, and get a better idea of the communities they're moving into from the perspective of the students"
+- Has the link to the creators' LinkedIn profiles in case anyone wants to contact them professionally
 - Has a "Return Home" button that when selected, returns users to the Home Page
   
 **#3) Login Page:**
 - requires a University of South Carolina email (email has to end in ".sc.edu")
 - requires a password
 - When the user successfully logs in, they are taken to the Dorm List Page
-- has button at the bottom that says "Don't have an account? Sign up" that you can click which
-  leads to the Create Account page
+- has button at the bottom that says "Create Account" that you can click which leads to the Create Account page in case you've 
+accidentally clicked on the wrong option on the Home Page.
 
 **#4) Create Account Page:**
 - requires first name
@@ -32,33 +32,32 @@ better idea of the communities they're moving into from the perspective of the s
 
 **#5) Dorm List Page:**
 - The dorm list page lists every available on-campus housing option at the University of South Carolina
-- Next to each of the names of the dorms, there are stars (can range from 1 star to 5 stars) based on user reviews
+- Next to each of the names of the dorms, there are stars (can range from 0.5 star to 5 stars) based on user reviews
 - When the name of the dorm is selected, the user is led to the Dorm Information Page
 - At the very top of the page, there will be a "View Location" button that will lead to the Map Page
-- There will also be a button at the top of the page that says “Profile” that when selected, leads to the User Profile Page
+- There will also be a button at the bottom of the page that says “User Profile” that when selected, leads to the User Profile Page
 
 **#6) User Profile Page**
--	Has a place where the user can upload a picture of themselves 
--	Has their first and last name
+-	Has the user's first and last name
 -	Allows the user to view reviews that they have left on the app
--	Has a “Logout” button that when selected, logs the user off and leads back to the Home Page
+-	Allows user to edit the reviews that they have left
 
 **#7) Dorm Information Page**
 - Every dorm on-campus at the University of South Carolina has its own information page
-- This information page contains all the information available about it at https://sc.edu/about/offices_and_divisions/housing/ in a section called
-  "Basic Information"
-- Below the "Basic Information" section will be a section named "User Reviews" with all of the reviews about that specific dorm that users have left
+- This information page contains all the information available about it at https://sc.edu/about/offices_and_divisions/housing/ above a picture of the building.
+- Below the picture of the residence hall, there will be a section named "User Reviews" under which with all of the reviews about that specific dorm that users have left
+  will be listed
 - There will be a button at the top of the "User Review" section that says "Leave a Review?" which will lead
   you to the "User Review Page"
 - Next to the title of the page, there will be a button that says "View Housing Location" that when selected will lead to the Map Page
   
- **#8) User Review Page**
- - This page allows a user to rate the dorm 1-5 stars
+ **#8) Add Review Page**
+ - This page allows a user to rate the dorm 0.5-5 stars (ratings are in 0.5 star increments)
  - Below the star rating section, there will be a text box where the user can write a text description/review
- - After the user is done rating the dorm and writing their text review, they will select a button that says "Done"
+ - After the user is done rating the dorm and writing their text review, they will select a button that says "Submit"
    and their review will be published to the dorm page.
- - If the user changes their mind about the review or wants to change their review, they can select the "Edit Review" button, 
-   which will lead them to the Edit Review Page
+ - If the user changes their mind about the review or wants to change their review, they can go to their User Profile and select the
+   review that they want to change, which leads them to the Edit Review Page. 
    
  **#9) Edit Review Page**
  - This page will allow the user to change the star rating they gave in their original review
@@ -67,7 +66,7 @@ better idea of the communities they're moving into from the perspective of the s
  - Reviews cannot be deleted
  
  **#10) Map Page**
- - Shows every on-campus housing option as a marker on a Google Map (or any map)
+ - Shows every on-campus housing option as a marker on a Google Map (uses Google Maps API key)
  - When a marker is selected, a text box will pop up listing the dorm's name and its address
  - There will be a button at the top of the page that says "Return to Dorm Listing" that when selected, leads back to the Dorm Information Page
 
