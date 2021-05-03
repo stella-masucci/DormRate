@@ -53,4 +53,14 @@ export class EditReviewPage implements OnInit {
     }
   }
 
+  back() {
+    this.router.navigate(["/tabs/profile"]);
+  }
+
+  logRatingChange(rating){
+        console.log("changed rating: ",rating);
+        this.review.stars = rating;
+        console.log(this.review.stars);
+    }
+
 }
