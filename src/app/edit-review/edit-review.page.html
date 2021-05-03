@@ -15,13 +15,12 @@
 
 
   <ion-item>
-   <!-- <ion-textarea auto-grow="true" inputmode="text" rows="7" [(ngModel)]="review.text"></ion-textarea> -->
-   <ion-input type="text" [(ngModel)]="review.text"></ion-input>
+   <ion-textarea auto-grow="true" inputmode="text" rows="7" [(ngModel)]="review.text"></ion-textarea>
+   <!-- <ion-input type="text" [(ngModel)]="review.text"></ion-input> -->
   </ion-item>
 
 
 <ion-item>
-  <ion-label>How many stars?</ion-label>
     <form [formGroup]="starform">
     <ionic5-star-rating #rating
       activeIcon = "star"
@@ -31,7 +30,7 @@
       activeColor = "#f7ab00"
       defaultColor = "#f7ab00"
       readonly = "false"
-      rating = "review.stars"
+      rating = "{{review.stars}}"
       fontSize = "32px"
       (ratingChanged)="logRatingChange($event)"
       formControlName="stars">

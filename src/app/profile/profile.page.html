@@ -13,7 +13,7 @@
 
 <ion-row style="height: 80px"></ion-row>
 
-<ion-item>Name: {{user?.name}} </ion-item>
+<ion-item>Name: {{name}} </ion-item>
 <ion-item *ngIf="(reviews | async) as reviews; else noreview">{{reviews.length}} reviews</ion-item>
 <ng-template #loading>
   <ion-item>No review</ion-item>

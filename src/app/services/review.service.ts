@@ -16,6 +16,8 @@ export class ReviewService {
 
   private user:User;
 
+  private name='';
+
   private reviewCollection: AngularFirestoreCollection<Review>;
   private allreviews: Observable<Review[]>;
   private dorms: Observable<Dorm[]>;
@@ -103,7 +105,7 @@ export class ReviewService {
     this.dorms.pipe(
     tap(dormsarray => {
        dormsarray.forEach(d => {
-         if(d!= null && d.favoritedby.includes(authUser.uid) && !(this.favorites.includes(d))) {
+         if(d.favoritedby!= null && d.favoritedby.includes(authUser.uid) && !(this.favorites.includes(d))) {
            this.favorites.push(d);
          }
        });
@@ -156,12 +158,27 @@ export class ReviewService {
     uid:review.uid});
   }
 
+  getReview(id:string): Observable<Review> {
+    return this.reviewCollection.doc<Review>(id).valueChanges().pipe(
+      take(1),
+      map(review => {
+        review.id = id;
+        return review;
+      })
+    );
+  }
+
+  setName(name:string) {
+    this.name = name;
+  }
+
+  getName(): string {
+    return this.name;
+  }
 
 
- //***** other necessary methods *********
 
-  //create a review
-  //edit a review
+
   //add a favorite
   //remove a favorite
 }

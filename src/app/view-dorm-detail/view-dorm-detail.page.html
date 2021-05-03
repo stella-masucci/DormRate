@@ -49,17 +49,23 @@
     <ion-button color="success" (click)="addReview(dorm)" slot="end">Leave a Review?</ion-button>
   </ion-item>
 
-  <ion-item *ngFor="let review of (reviews | async)">
-    <ion-text slot="start">{{review.text}}</ion-text>
-    <ionic5-star-rating #rating slot="end"
+  <ion-item class="review" *ngFor="let review of (reviews | async)">
+    <div>
+    <div class="rating">
+    <ionic5-star-rating #rating
                         activeIcon = "star"
                         defaultIcon = "star-outline"
                         activeColor = "#f7ab00"
                         defaultColor = "#f7ab00"
                         readonly = "true"
                         rating = "{{review.stars ? review.stars : 0}}"
-                        fontSize = "32px">
+                        fontSize = "30px">
     </ionic5-star-rating>
+    </div>
+    <div>
+      <ion-item>"{{review.text}}"</ion-item>
+    </div>
+    </div>
   </ion-item>
 
 </ion-content>
