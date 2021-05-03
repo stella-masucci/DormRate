@@ -15,6 +15,7 @@ import { Review } from '../modal/Review';
 })
 export class ProfilePage implements OnInit {
   private user : User;
+  private name='';
   private reviews: Observable<Review[]> = this.rs.getUserReviews();
 
   constructor(
@@ -40,13 +41,14 @@ export class ProfilePage implements OnInit {
         querySnapshot.forEach(function(doc) {
           console.log(doc.id, "=>", doc.data());
           self.user = new User(doc.data().uid, doc.data().name);
+          console.log("got to line 43");
           console.log(doc.data().name);
       });
     })
     .catch(function(error) {
       console.log("Error getting documents:",error);
     });
-    console.log(this.user.name);
+    this.name = this.rs.getName();
   }
 
   goToFavorites() {

@@ -42,7 +42,8 @@ export class SignInPage implements OnInit {
     console.log("Signing in");
     this.afauth.signInWithEmailAndPassword(email, password).then(user => {
   		// navigate to user profile
-  		console.log(user.user.email, user.user.uid);
+  		console.log(user.user.displayName);
+      this.rs.setName(user.user.displayName);
   		var user1 = firebase.auth().currentUser;
       //this.itemservice.setUID(user.user.uid);
       this.toastMessage();
@@ -93,10 +94,6 @@ export class SignInPage implements OnInit {
       var token = cred.accessToken;
       // The signed-in user info.
       var user = result.user;
-      // self.itemservice.setUID(user.uid);
-      // self.itemservice.load_my_orders();
-      // self.itemservice.load_my_carts();
-      // self.itemservice.setUsertype("visitor");
 
       this.toastMessage();
       self.router.navigate(["/tabs/dorms"]);

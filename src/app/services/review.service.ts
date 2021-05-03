@@ -16,6 +16,8 @@ export class ReviewService {
 
   private user:User;
 
+  private name='';
+
   private reviewCollection: AngularFirestoreCollection<Review>;
   private allreviews: Observable<Review[]>;
   private dorms: Observable<Dorm[]>;
@@ -156,12 +158,27 @@ export class ReviewService {
     uid:review.uid});
   }
 
+  getReview(id:string): Observable<Review> {
+    return this.reviewCollection.doc<Review>(id).valueChanges().pipe(
+      take(1),
+      map(review => {
+        review.id = id;
+        return review;
+      })
+    );
+  }
+
+  setName(name:string) {
+    this.name = name;
+  }
+
+  getName(): string {
+    return this.name;
+  }
 
 
- //***** other necessary methods *********
 
-  //create a review
-  //edit a review
+
   //add a favorite
   //remove a favorite
 }

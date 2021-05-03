@@ -15,7 +15,13 @@ import { Dorm} from '../modal/Dorm';
 })
 export class EditReviewPage implements OnInit {
 
-  review = null;
+  review: Review = {
+    stars: 0,
+    text: '',
+    dormID: '',
+    dormName: '',
+    uid: ''
+  };
   params = {};
 
     starform=null;
@@ -36,12 +42,17 @@ export class EditReviewPage implements OnInit {
     });}
 
   ngOnInit() {
-    this.ar.params.subscribe(
-      param => {
-  			this.review = param;
-        console.log(this.review.stars);
-  		})
   }
+
+  ngAfterViewInit(): void {
+  const id = this.ar.snapshot.paramMap.get('review');
+  if(id) {
+    this.rs.getReview(id).subscribe(reviewData => {
+      this.review = reviewData;
+      console.log(this.review);
+    })
+  }
+}
 
   updateItem() {
     this.user = firebase.auth().currentUser;
