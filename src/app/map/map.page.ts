@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 declare var google;
 
-interface Marker {
-  position: {
-    lat: number,
-    lng: number,
-  };
-  title: string;
-}
 @Component({
   selector: 'app-map',
   templateUrl: './map.page.html',
@@ -17,73 +13,37 @@ interface Marker {
 
 export class MapPage implements OnInit {
 
-  map = null;
-  markers: Marker[] = [
-    {
-      position: {
-        lat: 4.658383846282959,
-        lng: -74.09394073486328,
-      },
-      title: 'Parque Simón Bolivar'
-    },
-    {
-      position: {
-        lat: 4.667945861816406,
-        lng: -74.09964752197266,
-      },
-      title: 'Jardín Botánico'
-    },
-    {
-      position: {
-        lat: 4.676802158355713,
-        lng: -74.04825592041016,
-      },
-      title: 'Parque la 93'
-    },
-    {
-      position: {
-        lat: 4.6554284,
-        lng: -74.1094989,
-      },
-      title: 'Maloka'
-    },
-  ];
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  address: string;
+  latitude: number;
+  longitude: number;
 
-  constructor() {}
+  constructor(
+    private geolocation: Geolocation,
+    private nativeGeocoder: NativeGeocoder,
+    private router: Router) {
+  }
 
   ngOnInit() {
-    this.initMap();
   }
 
-  initMap() {
-    // create a new map by passing HTMLElement
-    const mapEle: HTMLElement = document.getElementById('map');
-    // create LatLng object
-    const myLatLng = {lat: 4.658383846282959, lng: -74.09394073486328};
-    // create map
-    this.map = new google.maps.Map(mapEle, {
-      center: myLatLng,
-      zoom: 12
-    });
-
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      this.renderMarkers();
-      mapEle.classList.add('show-map');
-    });
+  ngAfterViewInit() {
+    this.loadMap();
   }
 
-  renderMarkers() {
-    this.markers.forEach(marker => {
-      this.addMarker(marker);
-    });
+  loadMap() {
+    let latLng = new google.maps.LatLng(34.0223519, -118.285117);
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
   }
 
-  addMarker(marker: Marker) {
-    return new google.maps.Marker({
-      position: marker.position,
-      map: this.map,
-      title: marker.title
-    });
+  returnDormList() {
+    this.router.navigate(["/tabs/dorms"])
   }
 
 }
