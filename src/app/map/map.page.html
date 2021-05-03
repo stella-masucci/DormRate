@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Map Page</ion-title>
+    <ion-row>
+      <ion-title>Map Page</ion-title>
+      <ion-button (click)="returnDormList()">Return to Dorm Listing</ion-button>
+    </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div #map id="map"></div>
+  <div class="map-wrapper">
+    <div #map id="map"></div>
+  </div>
 </ion-content>
