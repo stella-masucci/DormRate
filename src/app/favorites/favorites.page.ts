@@ -28,7 +28,7 @@ export class FavoritesPage implements OnInit {
   }
 
   back() {
-    this.router.navigate(["/dorms"]);
+    this.router.navigate(["/tabs/dorms"]);
   }
 
 }

@@ -8,7 +8,7 @@
    text-align: center;
    align-items: center;
    position: absolute;
-   top: 36%;
+   top: 32%;
    font-size: 40px;
 }
 
@@ -24,7 +24,7 @@ ion-footer {
 
 .buttons {
   position: absolute;
-  top: 50%;
+  top: 52%;
   align-items: center;
   align-self: center;
 }
@@ -32,4 +32,25 @@ ion-footer {
 ion-button {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+ion-row {
+  width: 100%;
+  position: center;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  font-size: 40px;
+}
+
+.createaccountbutton {
+  top: 50%;
+}
+
+.signinbutton {
+  top: 58%;
+}
+
+.viewdormsbutton {
+  top: 66%;
 }

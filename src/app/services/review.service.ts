@@ -105,7 +105,7 @@ export class ReviewService {
     this.dorms.pipe(
     tap(dormsarray => {
        dormsarray.forEach(d => {
-         if(d!= null && d.favoritedby.includes(authUser.uid) && !(this.favorites.includes(d))) {
+         if(d.favoritedby!= null && d.favoritedby.includes(authUser.uid) && !(this.favorites.includes(d))) {
            this.favorites.push(d);
          }
        });

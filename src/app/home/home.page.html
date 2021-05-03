@@ -11,13 +11,22 @@
       <ion-row class="welcome" justify-content-center align-items-center style="flex-direction: column; color:azure;">
           Welcome to DormRate
       </ion-row>
-      <ion-row justify-content-center align-items-center style="flex-direction: column">
-      <div class="buttons">
-      <ion-button (click)="createaccount()" color="primary">Create Account</ion-button>
-      <ion-button (click)="signin()" color="success">Sign In</ion-button>
-      <ion-button (click)="viewdorms()" color="warning">View Dorm List</ion-button>
-      </div>
+
+
+
+       <!-- <ion-row justify-content-center align-items-center style="flex-direction: column"> -->
+      <!-- <div class="buttons"> -->
+      <ion-row class="createaccountbutton" justify-content-center align-items-center style="flex-direction: column;">
+        <ion-button (click)="createaccount()" color="primary">Create Account</ion-button>
       </ion-row>
+      <ion-row class="signinbutton" justify-content-center align-items-center style="flex-direction: column;">
+        <ion-button (click)="signin()" color="success">Sign In</ion-button>
+      </ion-row>
+      <ion-row class="viewdormsbutton" justify-content-center align-items-center style="flex-direction: column;">
+        <ion-button (click)="viewdorms()" color="warning">View Dorm List</ion-button>
+      </ion-row>
+      <!-- </div> -->
+      <!-- </ion-row> -->
   </ion-grid>
 </ion-content>
 <ion-footer justify-content-center align-items-center (click)="aboutus()">About Us</ion-footer>

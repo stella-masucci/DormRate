@@ -18,11 +18,30 @@
   placeholder="Find a dorm..."></ion-searchbar>
 
   <ion-list>
-    <ion-item *ngFor="let dorm of (dorms | async)">
-      <ion-thumbnail slot="start">
+
+    <ion-item (click)="viewDorm(dorm)" class="dorm" *ngFor="let dorm of (dorms | async)">
+        <ion-img [src]="dorm.img"></ion-img>
+        <div class="dormname">
+          <ion-label>{{dorm.name}}</ion-label>
+        </div>
+        <div class="rating">
+          <ionic5-star-rating #rating
+            activeIcon = "star"
+            defaultIcon = "star-outline"
+            halfIcon = "star-half"
+            halfStar = "true"
+            activeColor = "#f7ab00"
+            defaultColor = "#f7ab00"
+            readonly = "true"
+            rating = "{{dorm.averagestars ? dorm.averagestars : 0}}"
+            fontSize = "30px">
+          </ionic5-star-rating>
+        </div>
+
+      <!-- <ion-thumbnail slot="start">
         <ion-img [src]="dorm.thumbnail"></ion-img>
-      </ion-thumbnail>
-      <ion-label (click)="viewDorm(dorm)">{{dorm.name}}</ion-label>
+      </ion-thumbnail> -->
+      <!-- <ion-label (click)="viewDorm(dorm)">{{dorm.name}}</ion-label>
       <ionic5-star-rating #rating
         activeIcon = "star"
         defaultIcon = "star-outline"
@@ -35,7 +54,8 @@
         fontSize = "32px">
       </ionic5-star-rating>
       <ion-label>{{dorm.averagestars ? '(' + dorm.averagestars + ' / 5)' : ''}}</ion-label>
-      <ion-label>{{dorm.numberofreviews ? dorm.numberofreviews : 0}} reviews</ion-label>
+      <ion-label>{{dorm.numberofreviews ? dorm.numberofreviews : 0}} reviews</ion-label> -->
+
     </ion-item>
-    </ion-list>
+  </ion-list>
 </ion-content>

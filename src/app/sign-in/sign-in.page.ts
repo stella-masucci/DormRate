@@ -61,6 +61,7 @@ export class SignInPage implements OnInit {
         .catch(function(error) {
           console.log("Error getting documents:",error);
         });
+        self.router.navigate(["/tabs/dorms"]);
   	})
   	.catch(error => {
       console.log(error);
